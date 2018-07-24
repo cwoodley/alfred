@@ -69,7 +69,7 @@ class App extends React.Component<Props, State> {
   async getTopicArticles(topic: any) {
     await this.cache.loadCuration(topic)
     const curation = this.cache.getCuration(topic)
-    this.setState({ unFiltered: curation.articles, articles: curation.articles })
+    this.setState({ unFiltered: curation.articles, articles: curation.articles, topic: topic })
     this.onTotalReadClick(this.state.selectedTotalToRead)
     // console.log(curation)
   }
@@ -124,7 +124,7 @@ class App extends React.Component<Props, State> {
         <a className={articleReadClass} onClick={() => this.articleRead(article)} href={article._self} target="_blank">
           <h3 className="headline">
             <span className="kicker">{article.headKicker}</span>
-            {article.heading}
+            <span className="heading">{article.heading}</span>
           </h3>
           <p className="teaser">{article.homepageTeaser}</p>
           <div className="article-data">
@@ -182,7 +182,11 @@ class App extends React.Component<Props, State> {
               <h2 className="label">{this.state.topic}</h2>
             </div>
             <div>
-              <SaveTopics topics={this.state.topicList} selectAction={this.handleTopicSelect} />
+              <SaveTopics
+                topics={this.state.topicList}
+                selectAction={this.handleTopicSelect}
+                selected={this.state.topic}
+              />
               {this.renderArticles()}
             </div>
           </main>

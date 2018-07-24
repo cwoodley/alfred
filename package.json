@@ -23,7 +23,7 @@
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start-js": "react-scripts-ts start",
     "start": "npm-run-all -p watch-css start-js",
-    "build": "npm run build-css && react-scripts-ts build"
+    "deploy": "npm run build-css && react-scripts-ts build"
   },
   "devDependencies": {
     "@types/jest": "^23.3.0",
