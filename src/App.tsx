@@ -190,7 +190,7 @@ class App extends React.Component<Props, State> {
           <main>
             <div className="sidebar">
               {this.state.topics.map((t, i) => (
-                <h2 key={i} className="label">
+                <h2 key={i} style={{ width: '100%' }} className="label">
                   {t}
                 </h2>
               ))}
