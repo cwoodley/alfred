@@ -191,6 +191,7 @@ main {
   padding: 13px 17px;
   margin: 0;
   position: sticky;
+  top: 100px;
   display: inline-block;
 }
 
@@ -203,6 +204,7 @@ main {
 }
 
 // Articles
+
 .kicker {
   font-family: 'Fira Sans', sans-serif;
   font-size: 0.875rem;
@@ -217,6 +219,14 @@ main {
   @include interpolate(font-size, 320px, 1280px, 26px, 32px);
   line-height: 1.217;
   margin: 0;
+}
+
+article a:hover .heading {
+  text-decoration: underline;
+}
+
+article a:hover .kicker {
+  text-decoration: none;
 }
 
 .article-data {
@@ -271,14 +281,73 @@ article {
 
   @media screen and (min-width: 860px) {
     margin: 0 10vw 0 0;
-
-    &:first-child {
-      padding-top: 0;
-    }
   }
 
   a {
     text-decoration: none;
     color: $body-font-color;
+  }
+}
+
+main {
+  padding-top: 100px;
+}
+
+// topics
+.topic-section {
+  position: sticky;
+  top: 0;
+  height: 100px;
+  background: #2b2c2d;
+  color: white;
+  width: 100%;
+  margin-top: -100px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  @media screen and (min-width: 880px) {
+    width: calc(100% + 185px);
+    transform: translateX(-185px);
+  }
+
+  p {
+    display: block;
+    width: 100%;
+    margin-top: 0;
+    text-align: center;
+    font-size: 12px;
+  }
+
+  button {
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 12px;
+    border: 2px solid transparent;
+    transition: background 250ms ease;
+
+    &:hover {
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+    }
+
+    &:active,
+    &:focus,
+    .active {
+      background: $bg;
+      color: white;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    & + button {
+      margin-left: 18px;
+    }
   }
 }

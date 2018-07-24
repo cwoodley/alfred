@@ -15,8 +15,8 @@ export class SaveTopics extends React.Component<Props> {
     const topics = this.props.topics
 
     return (
-      <div>
-        topics:
+      <div className="topic-section">
+        <p>Tell us your topics of interest</p>
         {topics &&
           topics.map((topic, id) => {
             return (
