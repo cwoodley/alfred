@@ -48,4 +48,17 @@ export class AlfredCache {
     json.readingTime = getReadingTimeForArticle(json)
     this.articlesCache[id] = json
   }
+
+  public async getTopics() {
+    const response = await fetch(`${BASE_URL}/taxonomy/navigation-menu`)
+    const json = await response.json()
+
+    const topics: string[] = []
+
+    json.forEach((element: any) => {
+      topics.push(element.id)
+    })
+
+    return topics
+  }
 }
