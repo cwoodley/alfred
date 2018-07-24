@@ -41,15 +41,15 @@ class App extends React.Component<Props, State> {
     const articlesToRead: Array<Article> = []
     if (this.state.articles.length > 0) {
       this.state.unFiltered.forEach(article => {
-        const articleMin = article.readingTime.minutes
+        const articleSeconds = article.readingTime.time
         // if the article goes over the totalMin then just exit
-        if (currentTime + articleMin > totalMin) {
+        if ((currentTime + articleSeconds) / 60000 > totalMin) {
           return
         }
         // article will fit within totalMin
-        if (currentTime < totalMin) {
+        if (currentTime / 60000 < totalMin) {
           articlesToRead.push(article)
-          currentTime += articleMin
+          currentTime += articleSeconds
         }
       })
       this.setState({ articles: articlesToRead, selectedTotalToRead: totalMin })
@@ -89,10 +89,10 @@ class App extends React.Component<Props, State> {
     let total = 0
     if (read && read.length > 0) {
       read.forEach((article: Article) => {
-        total += Math.round(article.readingTime.minutes)
+        total += article.readingTime.time
       })
     }
-    return total
+    return Math.round(total / 60000)
   }
 
   articleHasBeenRead(article: Article) {
@@ -119,6 +119,9 @@ class App extends React.Component<Props, State> {
 
   renderArticle(article: Article) {
     const articleReadClass = this.articleHasBeenRead(article) ? 'visited' : undefined
+    const showSeconds = article.readingTime.time < 60000
+    const time = article.readingTime.time
+
     return (
       <article key={article.id}>
         <a className={articleReadClass} onClick={() => this.articleRead(article)} href={article._self} target="_blank">
@@ -132,8 +135,8 @@ class App extends React.Component<Props, State> {
           <p className="teaser">{article.homepageTeaser}</p>
           <div className="article-data">
             <span className="reading-time">
-              <span className="number">{Math.round(article.readingTime.minutes)}</span>
-              <span className="timescale">mins</span>
+              <span className="number">{showSeconds ? Math.round(time / 1000) : Math.round(time / 60000)}</span>
+              <span className="timescale">{showSeconds ? 'secs' : 'mins'}</span>
             </span>
             <div className="article-creation">
               <p className="byline">
