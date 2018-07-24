@@ -3,6 +3,7 @@ import { AlfredCache } from './alfred-cache'
 import './App.css'
 import { Article } from './types/article'
 import { SaveTopics } from 'src/SaveTopics'
+import { ButtonGroup } from './ButtonGroup'
 import * as store from 'store'
 
 type Props = {}
@@ -10,6 +11,9 @@ type Props = {}
 type State = {
   topic: string
   articles: Array<Article>
+  unFiltered: Array<Article>
+  buttonValues: number[]
+  selectedTotalToRead: number
 }
 
 class App extends React.Component<Props, State> {
@@ -19,7 +23,30 @@ class App extends React.Component<Props, State> {
     super(props)
     this.state = {
       topic: 'news',
+      unFiltered: [],
       articles: [],
+      buttonValues: [5, 10, 15],
+      selectedTotalToRead: 5,
+    }
+  }
+
+  onTotalReadClick(totalMin: number) {
+    let currentTime = 0
+    const articlesToRead: Array<Article> = []
+    if (this.state.articles.length > 0) {
+      this.state.unFiltered.forEach(article => {
+        const articleMin = article.readingTime.minutes
+        // if the article goes over the totalMin then just exit
+        if (currentTime + articleMin > totalMin) {
+          return
+        }
+        // article will fit within totalMin
+        if (currentTime < totalMin) {
+          articlesToRead.push(article)
+          currentTime += articleMin
+        }
+      })
+      this.setState({ articles: articlesToRead })
     }
   }
 
@@ -32,7 +59,8 @@ class App extends React.Component<Props, State> {
     await this.cache.loadCuration(topic)
     const curation = this.cache.getCuration(topic)
     console.log(curation)
-    this.setState({ articles: curation.articles })
+    this.setState({ unFiltered: curation.articles, articles: curation.articles })
+    this.onTotalReadClick(this.state.selectedTotalToRead)
   }
 
   componentWillMount() {
@@ -40,7 +68,6 @@ class App extends React.Component<Props, State> {
       this.getTopicArticles('news')
       return
     }
-
     this.getTopicArticles(store.get('topic'))
   }
 
@@ -83,15 +110,11 @@ class App extends React.Component<Props, State> {
         <div className="wrapper">
           <header>
             <h1>Alfred...</h1>
-
-            <div className="select-time">
-              <p>How many minutes?</p>
-              <div className="button-group">
-                <button type="button">5</button>
-                <button type="button">10</button>
-                <button type="button">15</button>
-              </div>
-            </div>
+            <ButtonGroup
+              onClick={(m: number) => this.onTotalReadClick(m)}
+              values={this.state.buttonValues}
+              selectedValue={this.state.selectedTotalToRead}
+            />
             <div className="ribbon-read">
               <p>
                 <span className="time">10</span> minutes reading completed
