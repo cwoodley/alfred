@@ -68,10 +68,14 @@ class App extends React.Component<Props, State> {
         <div className="wrapper">
           <header>
             <h1>Alfred...</h1>
-            <div className="button-group">
-              <button type="button">5</button>
-              <button type="button">10</button>
-              <button type="button">15</button>
+
+            <div className="select-time">
+              <p>How many minutes?</p>
+              <div className="button-group">
+                <button type="button">5</button>
+                <button type="button">10</button>
+                <button type="button">15</button>
+              </div>
             </div>
             <div className="ribbon-read">
               <p>

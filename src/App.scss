@@ -38,44 +38,70 @@ body {
   color: $body-font-color;
 }
 
+.wrapper {
+  width: 90%;
+  margin: 0 auto;
+
+  @media screen and (min-width: 500px) {
+    width: 80%;
+    padding: 2rem;
+  }
+}
+
 //header
 header {
   display: flex;
   align-items: center;
-  padding-bottom: 26px;
+  padding-top: 16px;
   flex-wrap: wrap;
   justify-content: space-between;
+
+  @media screen and (min-width: 900px) {
+    padding-bottom: 26px;
+  }
 }
 
 h1 {
   font-family: 'Playfair Display', serif;
   @include interpolate(font-size, 320px, 1280px, 46px, 100px);
   color: white;
-  margin: 0 0 1.438rem 0;
+  margin: 0;
+
+  @media screen and (min-width: 500px) {
+    margin: 0 0 1.438rem 0;
+  }
 }
 
-.button-group {
-  border: 2px solid white;
-  border-radius: 10px;
-  width: 240px;
-  flex-basis: 240px;
-  height: 54px;
-  font-size: 20px;
-  margin: 0 auto;
+.select-time {
+  width: 150px;
+  flex-basis: 150px;
+  font-size: 12px;
+  color: white;
+  text-align: center;
 
   @media screen and (min-width: 880px) {
     margin-left: auto;
     margin-right: 40px;
   }
+}
+
+.button-group {
+  border: 2px solid white;
+  border-radius: 10px;
+  height: 32px;
+  font-size: 20px;
+  margin: 0 auto;
+  width: 100%;
 
   button {
     background: none;
     border: none;
     color: white;
-    width: 80px;
-    height: 54px;
+    width: 50px;
+    height: 32px;
     padding: 0;
     vertical-align: middle;
+    font-size: 14px;
 
     &:first-child {
       border-bottom-left-radius: 8px;
@@ -111,44 +137,16 @@ h1 {
   width: 100%;
   line-height: 1;
   color: white;
-  font-size: 16px;
-  margin-top: 25px;
-
-  &::before {
-    content: '';
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 25px 25px 25px 0;
-    border-color: transparent $bg transparent transparent;
-    right: 0;
-    position: absolute;
-    top: 0;
-  }
-
-  &::after {
-    content: '';
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 25px 0 25px 25px;
-    border-color: transparent transparent transparent $bg;
-    bottom: 0;
-    left: 0;
-    position: absolute;
-  }
+  font-size: 12px;
+  margin-top: 16px;
 
   @media screen and (min-width: 900px) {
     width: 140px;
     flex-basis: 140px;
     padding-bottom: 35px;
-    margin-top: -55px;
+    margin-top: -71px;
     font-size: 12px;
     line-height: 1.4;
-
-    &::before {
-      content: none;
-    }
 
     &::after {
       content: '';
@@ -171,11 +169,6 @@ h1 {
 }
 
 // article
-.wrapper {
-  width: 80%;
-  margin: 0 auto;
-  padding: 2rem;
-}
 
 main {
   background: white;
