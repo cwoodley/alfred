@@ -10,7 +10,7 @@ if (!blocks) {
 }
 
 blocks.forEach(block => {
-  if (block.kind != 'text') {
+  if (block.kind !== 'text') {
     return
   }
 
