@@ -3,12 +3,14 @@ import { AlfredCache } from './alfred-cache'
 import './App.css'
 import { Article } from './types/article'
 import { SaveTopics } from 'src/SaveTopics'
+import { ButtonGroup } from './ButtonGroup'
 
 type Props = {}
 
 type State = {
   topic: string
   articles: Array<Article>
+  unFiltered: Array<Article>
 }
 
 class App extends React.Component<Props, State> {
@@ -18,7 +20,28 @@ class App extends React.Component<Props, State> {
     super(props)
     this.state = {
       topic: 'news',
+      unFiltered: [],
       articles: [],
+    }
+  }
+
+  onTotalReadClick(totalMin: number) {
+    let currentTime = 0
+    const articlesToRead: Array<Article> = []
+    if (this.state.articles.length > 0) {
+      this.state.unFiltered.forEach(article => {
+        const articleMin = article.readingTime.minutes
+        // if the article goes over the totalMin then just exit
+        if (currentTime + articleMin > totalMin) {
+          return
+        }
+        // article will fit within totalMin
+        if (currentTime < totalMin) {
+          articlesToRead.push(article)
+          currentTime += articleMin
+        }
+      })
+      this.setState({ articles: articlesToRead })
     }
   }
 
@@ -26,7 +49,7 @@ class App extends React.Component<Props, State> {
     await this.cache.loadCuration(this.state.topic)
     const curation = this.cache.getCuration(this.state.topic)
     console.log(curation)
-    this.setState({ articles: curation.articles })
+    this.setState({ unFiltered: curation.articles, articles: curation.articles })
   }
 
   renderArticle(article: Article) {
@@ -68,12 +91,7 @@ class App extends React.Component<Props, State> {
         <div className="wrapper">
           <header>
             <h1>Alfred...</h1>
-            <div className="button-group">
-              <button type="button">5</button>
-              <button type="button">10</button>
-              <button type="button">15</button>
-              <button type="button">20</button>
-            </div>
+            <ButtonGroup onClick={(m: number) => this.onTotalReadClick(m)} />
           </header>
           <main>
             <div className="sidebar">
