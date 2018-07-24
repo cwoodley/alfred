@@ -1,36 +1,13 @@
 import * as React from 'react'
-import * as store from 'store'
 
 type Props = {
   topics: string[]
+  selectAction: (any: any) => void
 }
 
-interface IState {
-  [topicName: string]: boolean
-}
-
-export class SaveTopics extends React.Component<Props, IState> {
+export class SaveTopics extends React.Component<Props> {
   constructor(props: Props) {
     super(props)
-  }
-
-  handleChange = (event: any) => {
-    const topic = event.target
-
-    if (!topic.checked) {
-      this.setState({
-        [topic.name]: false,
-      })
-      store.remove(topic.name)
-
-      return
-    }
-
-    store.set(topic.name, true)
-
-    this.setState({
-      [topic.name]: true,
-    })
   }
 
   render() {
@@ -39,17 +16,14 @@ export class SaveTopics extends React.Component<Props, IState> {
     return (
       <div>
         topics:
-        <form>
-          {topics &&
-            topics.map((topic, id) => {
-              return (
-                <li key={id}>
-                  {topic}
-                  <input type="checkbox" name={topic} onChange={this.handleChange} />
-                </li>
-              )
-            })}
-        </form>
+        {topics &&
+          topics.map((topic, id) => {
+            return (
+              <button key={id} name={topic} onClick={this.props.selectAction}>
+                {topic}
+              </button>
+            )
+          })}
       </div>
     )
   }
