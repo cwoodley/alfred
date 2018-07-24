@@ -1,0 +1,6 @@
+{
+  // Place your settings in this file to overwrite default and user settings.
+  "files.eol": "\n",
+  "editor.formatOnSave": true,
+  "editor.rulers": [120]
+}

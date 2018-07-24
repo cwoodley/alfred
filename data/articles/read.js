@@ -1,4 +1,4 @@
-const readingTime = require('reading-time');
+const readingTime = require('reading-time')
 
 const file = require('./B88486320Z.json')
 
@@ -10,7 +10,7 @@ if (!blocks) {
 }
 
 blocks.forEach(block => {
-  if (block.kind != 'text') {
+  if (block.kind !== 'text') {
     return
   }
 
