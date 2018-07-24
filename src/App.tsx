@@ -35,9 +35,10 @@ class App extends React.Component<Props, State> {
     this.setState({ articles: curation.articles })
   }
 
-  async componentWillMount() {
+  componentWillMount() {
     if (!store.get('topic')) {
       this.getTopicArticles('news')
+      return
     }
 
     this.getTopicArticles(store.get('topic'))
