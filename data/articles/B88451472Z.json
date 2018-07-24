@@ -1,1 +1,137 @@
-{"_self":"https://elb-dev-thewest-claf-www.swmdigital.io/news/health/more-than-100-kids-a-year-confused-over-their-gender-ng-b88451472z","id":"B88451472Z","kind":"article","slug":"more-than-100-kids-a-year-confused-over-their-gender-ng-b88451472z","status":"live","source":"The West Australian","isSponsored":false,"excludeFeaturedVideo":false,"publicationDate":"2017-07-24T06:42:00.000Z","created":"2017-04-23T23:29:50.001Z","lastUpdated":"2017-07-24T06:55:35.482Z","topics":{"primary":{"id":"news/health","title":"Health","metadata":{},"seoTitle":"Health","parent":{"id":"news","title":"News","metadata":{},"seoTitle":"News","seoDescription":"The latest news at home and across the world featuring news on Western Australia, Australia, the world and other topics you are interested in."}},"secondary":[{"id":"news/wa","title":"WA News","metadata":{},"seoTitle":"WA News","parent":{"id":"news","title":"News","metadata":{},"seoTitle":"News","seoDescription":"The latest news at home and across the world featuring news on Western Australia, Australia, the world and other topics you are interested in."}},{"id":"lifestyle/motoring","title":"Motoring","metadata":{},"seoTitle":"Motoring","parent":{"id":"lifestyle","title":"Lifestyle","metadata":{},"seoTitle":"Lifestyle","seoDescription":"The latest lifestyle content featuring recipes, Perth's best food, health and wellbeing advice and tips for your garden and home."}}]},"heading":"Testing subheads and bulleted lists working in NewsGate and Content API","byline":{"text":"Brendan Underwood"},"profiles":[],"headKicker":"Test Subheads Lists","homepageHead":"Testing subheads and lists for working","homepageTeaser":"Do these subheads and bulleted lists really work or is it an elaborate hoax?","cardImages":[],"mainImages":[{"format":"image/jpeg","src":"https://dev-images.thewest.com.au/publication/B88451472Z/G3A122EC1.1-0.jpg","dimensions":"3264x2448","captionText":"Dan and Brendan’s cars, and WRX and Silvia, basking in the winter’s sun.","credit":"Brendan Underwood"}],"mainVideo":null,"socialHead":null,"socialImage":null,"socialTeaser":null,"redirectUrl":null,"canonicalUrl":null,"canonicalTitle":null,"blogState":null,"content":{"kind":"content","blocks":[{"kind":"text","text":"Jowl prosciutto frankfurter capicola ball tip leberkas. Biltong pancetta shank jowl, doner frankfurter pork kevin. Drumstick hamburger filet mignon spare ribs, venison pork loin t-bone leberkas porchetta biltong alcatra turkey beef ribs prosciutto. Biltong tongue corned beef prosciutto pastrami, beef ribs tri-tip. Fatback andouille drumstick capicola short loin ball tip.","intentions":[]},{"kind":"subhead","text":"Top 10 bacons people love"},{"kind":"unordered-list","items":[{"kind":"text","text":"Shankle shank picanha tenderloin frankfurter, brisket sausage capicola kielbasa t-bone shoulder doner. ","intentions":[]},{"kind":"text","text":"Sausage pork chop chicken capicola shank, tri-tip burgdoggen ribeye hamburger cow prosciutto corned beef. ","intentions":[]},{"kind":"text","text":"Jerky spare ribs leberkas ham hock cupim hamburger tenderloin jowl. Alcatra short ribs capicola leberkas.","intentions":[]}]},{"kind":"text","text":"Spare ribs picanha brisket venison. Picanha bacon pork belly tenderloin ham hock capicola flank ball tip andouille venison pastrami. Venison ground round drumstick, turducken fatback flank alcatra ham. Short ribs venison flank drumstick turkey beef pastrami ball tip pancetta ham hock pork loin kielbasa shoulder porchetta.","intentions":[]},{"kind":"text","text":"Prosciutto picanha shankle sirloin. Boudin fatback picanha, bresaola sirloin pancetta alcatra salami shank meatball. Turkey chicken pastrami, turducken strip steak ham hock alcatra t-bone ball tip leberkas tenderloin pork chop ribeye sirloin. Picanha porchetta t-bone pork belly kielbasa andouille tail cow pork chop turkey ham corned beef short ribs. Pastrami porchetta jowl burgdoggen beef. Hamburger strip steak venison bacon picanha, capicola ground round flank pork loin andouille kevin sirloin leberkas cow. Salami spare ribs tri-tip kevin.","intentions":[]},{"kind":"subhead","text":"Another top 10 meats"},{"kind":"unordered-list","items":[{"kind":"text","text":"Turducken brisket fatback leberkas shoulder. ","intentions":[]},{"kind":"text","text":"T-bone beef ribs kielbasa fatback rump pastrami landjaeger corned beef ground round tongue filet mignon pork loin sirloin. ","intentions":[]},{"kind":"text","text":"Picanha pork belly strip steak short loin landjaeger rump. ","intentions":[]},{"kind":"text","text":"Pork belly brisket pig meatloaf, alcatra swine rump andouille pastrami short loin landjaeger.","intentions":[]}]}]},"relatedStories":[],"keywords":[],"hasOovvuuRecommendations":false}
+{
+  "_self": "https://elb-dev-thewest-claf-www.swmdigital.io/news/health/more-than-100-kids-a-year-confused-over-their-gender-ng-b88451472z",
+  "id": "B88451472Z",
+  "kind": "article",
+  "slug": "more-than-100-kids-a-year-confused-over-their-gender-ng-b88451472z",
+  "status": "live",
+  "source": "The West Australian",
+  "isSponsored": false,
+  "excludeFeaturedVideo": false,
+  "publicationDate": "2017-07-24T06:42:00.000Z",
+  "created": "2017-04-23T23:29:50.001Z",
+  "lastUpdated": "2017-07-24T06:55:35.482Z",
+  "topics": {
+    "primary": {
+      "id": "news/health",
+      "title": "Health",
+      "metadata": {},
+      "seoTitle": "Health",
+      "parent": {
+        "id": "news",
+        "title": "News",
+        "metadata": {},
+        "seoTitle": "News",
+        "seoDescription": "The latest news at home and across the world featuring news on Western Australia, Australia, the world and other topics you are interested in."
+      }
+    },
+    "secondary": [{
+      "id": "news/wa",
+      "title": "WA News",
+      "metadata": {},
+      "seoTitle": "WA News",
+      "parent": {
+        "id": "news",
+        "title": "News",
+        "metadata": {},
+        "seoTitle": "News",
+        "seoDescription": "The latest news at home and across the world featuring news on Western Australia, Australia, the world and other topics you are interested in."
+      }
+    }, {
+      "id": "lifestyle/motoring",
+      "title": "Motoring",
+      "metadata": {},
+      "seoTitle": "Motoring",
+      "parent": {
+        "id": "lifestyle",
+        "title": "Lifestyle",
+        "metadata": {},
+        "seoTitle": "Lifestyle",
+        "seoDescription": "The latest lifestyle content featuring recipes, Perth's best food, health and wellbeing advice and tips for your garden and home."
+      }
+    }]
+  },
+  "heading": "Testing subheads and bulleted lists working in NewsGate and Content API",
+  "byline": {
+    "text": "Brendan Underwood"
+  },
+  "profiles": [],
+  "headKicker": "Test Subheads Lists",
+  "homepageHead": "Testing subheads and lists for working",
+  "homepageTeaser": "Do these subheads and bulleted lists really work or is it an elaborate hoax?",
+  "cardImages": [],
+  "mainImages": [{
+    "format": "image/jpeg",
+    "src": "https://dev-images.thewest.com.au/publication/B88451472Z/G3A122EC1.1-0.jpg",
+    "dimensions": "3264x2448",
+    "captionText": "Dan and Brendan’s cars, and WRX and Silvia, basking in the winter’s sun.",
+    "credit": "Brendan Underwood"
+  }],
+  "mainVideo": null,
+  "socialHead": null,
+  "socialImage": null,
+  "socialTeaser": null,
+  "redirectUrl": null,
+  "canonicalUrl": null,
+  "canonicalTitle": null,
+  "blogState": null,
+  "readingTime": "3 mins",
+  "content": {
+    "kind": "content",
+    "blocks": [{
+      "kind": "text",
+      "text": "Jowl prosciutto frankfurter capicola ball tip leberkas. Biltong pancetta shank jowl, doner frankfurter pork kevin. Drumstick hamburger filet mignon spare ribs, venison pork loin t-bone leberkas porchetta biltong alcatra turkey beef ribs prosciutto. Biltong tongue corned beef prosciutto pastrami, beef ribs tri-tip. Fatback andouille drumstick capicola short loin ball tip.",
+      "intentions": []
+    }, {
+      "kind": "subhead",
+      "text": "Top 10 bacons people love"
+    }, {
+      "kind": "unordered-list",
+      "items": [{
+        "kind": "text",
+        "text": "Shankle shank picanha tenderloin frankfurter, brisket sausage capicola kielbasa t-bone shoulder doner. ",
+        "intentions": []
+      }, {
+        "kind": "text",
+        "text": "Sausage pork chop chicken capicola shank, tri-tip burgdoggen ribeye hamburger cow prosciutto corned beef. ",
+        "intentions": []
+      }, {
+        "kind": "text",
+        "text": "Jerky spare ribs leberkas ham hock cupim hamburger tenderloin jowl. Alcatra short ribs capicola leberkas.",
+        "intentions": []
+      }]
+    }, {
+      "kind": "text",
+      "text": "Spare ribs picanha brisket venison. Picanha bacon pork belly tenderloin ham hock capicola flank ball tip andouille venison pastrami. Venison ground round drumstick, turducken fatback flank alcatra ham. Short ribs venison flank drumstick turkey beef pastrami ball tip pancetta ham hock pork loin kielbasa shoulder porchetta.",
+      "intentions": []
+    }, {
+      "kind": "text",
+      "text": "Prosciutto picanha shankle sirloin. Boudin fatback picanha, bresaola sirloin pancetta alcatra salami shank meatball. Turkey chicken pastrami, turducken strip steak ham hock alcatra t-bone ball tip leberkas tenderloin pork chop ribeye sirloin. Picanha porchetta t-bone pork belly kielbasa andouille tail cow pork chop turkey ham corned beef short ribs. Pastrami porchetta jowl burgdoggen beef. Hamburger strip steak venison bacon picanha, capicola ground round flank pork loin andouille kevin sirloin leberkas cow. Salami spare ribs tri-tip kevin.",
+      "intentions": []
+    }, {
+      "kind": "subhead",
+      "text": "Another top 10 meats"
+    }, {
+      "kind": "unordered-list",
+      "items": [{
+        "kind": "text",
+        "text": "Turducken brisket fatback leberkas shoulder. ",
+        "intentions": []
+      }, {
+        "kind": "text",
+        "text": "T-bone beef ribs kielbasa fatback rump pastrami landjaeger corned beef ground round tongue filet mignon pork loin sirloin. ",
+        "intentions": []
+      }, {
+        "kind": "text",
+        "text": "Picanha pork belly strip steak short loin landjaeger rump. ",
+        "intentions": []
+      }, {
+        "kind": "text",
+        "text": "Pork belly brisket pig meatloaf, alcatra swine rump andouille pastrami short loin landjaeger.",
+        "intentions": []
+      }]
+    }]
+  },
+  "relatedStories": [],
+  "keywords": [],
+  "hasOovvuuRecommendations": false
+}
