@@ -21,8 +21,8 @@ export interface ListArticle extends ReadingTime {
   mainImages: object[]
   mainVideo: object | null
   topics: {
-    primary: object
-    secondary: object[]
+    primary: { id: string }
+    secondary: { id: string }[]
   }
   redirectUrl: string | null
   canonicalUrl: string | null
@@ -52,8 +52,8 @@ export interface Article extends ListArticle {
   mainImages: object[]
   mainVideo: object | null
   topics: {
-    primary: object
-    secondary: object[]
+    primary: { id: string }
+    secondary: { id: string }[]
   }
   redirectUrl: string | null
   canonicalUrl: string | null
