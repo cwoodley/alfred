@@ -286,6 +286,42 @@ article {
   a {
     text-decoration: none;
     color: $body-font-color;
+    display: block;
+    position: relative;
+  }
+
+  .visited-item {
+    width: 127px;
+    height: 127px;
+    position: absolute;
+    background: $highlight;
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    color: #fff;
+    text-align: center;
+    align-items: center;
+
+    .tick {
+    }
+  }
+
+  a.visited .visited-item {
+    display: flex;
+  }
+
+  a:visited {
+    color: #bfc0c0;
+
+    .kicker {
+      color: #bfc0c0;
+    }
+
+    .reading-time {
+      background: #bfc0c0;
+    }
   }
 }
 

@@ -209,7 +209,30 @@ article {
       margin: 0 10vw 0 0; } }
   article a {
     text-decoration: none;
-    color: #2b2c2d; }
+    color: #2b2c2d;
+    display: block;
+    position: relative; }
+  article .visited-item {
+    width: 127px;
+    height: 127px;
+    position: absolute;
+    background: #02c2c9;
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    color: #fff;
+    text-align: center;
+    align-items: center; }
+  article a.visited .visited-item {
+    display: flex; }
+  article a:visited {
+    color: #bfc0c0; }
+    article a:visited .kicker {
+      color: #bfc0c0; }
+    article a:visited .reading-time {
+      background: #bfc0c0; }
 
 main {
   padding-top: 100px; }
