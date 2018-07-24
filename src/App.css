@@ -16,16 +16,19 @@ h1 {
       h1 {
         font-size: 100px; } }
 
-.label {
-  font-family: 'Fira Sans', sans-serif;
-  font-size: 0.875em;
-  font-weight: bold;
-  background-color: #E5E5E5;
-  text-transform: uppercase;
-  padding: 13px 17px;
-  margin: 0;
-  position: sticky;
-  display: inline-block; }
+.button-group {
+  border: 2px solid white;
+  border-radius: 20px;
+  width: 325px;
+  font-size: 20px; }
+  .button-group button {
+    background: none;
+    border: none;
+    color: white;
+    width: 80px;
+    height: 54px; }
+  .button-group button + button {
+    border-left: 2px solid white; }
 
 .wrapper {
   width: 80%;
@@ -40,6 +43,17 @@ main {
     main {
       padding: 35px 0 0 0;
       grid-template-columns: 185px auto; } }
+
+.label {
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 0.875em;
+  font-weight: bold;
+  background-color: #E5E5E5;
+  text-transform: uppercase;
+  padding: 13px 17px;
+  margin: 0;
+  position: sticky;
+  display: inline-block; }
 
 .sidebar {
   padding-right: 25px; }

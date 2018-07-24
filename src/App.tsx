@@ -15,7 +15,7 @@ class App extends React.Component {
         <div className="wrapper">
             <header>
                 <h1>Alfred...</h1>
-                <div className="buttongroup">
+                <div className="button-group">
                     <button type="button">5</button>
                     <button type="button">10</button>
                     <button type="button">15</button>
