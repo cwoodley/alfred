@@ -14,6 +14,7 @@ type State = {
   unFiltered: Array<Article>
   buttonValues: number[]
   selectedTotalToRead: number
+  totalRead: number
 }
 
 class App extends React.Component<Props, State> {
@@ -27,6 +28,7 @@ class App extends React.Component<Props, State> {
       articles: [],
       buttonValues: [5, 10, 15],
       selectedTotalToRead: 5,
+      totalRead: this.getReadTotal(),
     }
   }
 
@@ -70,10 +72,40 @@ class App extends React.Component<Props, State> {
     this.getTopicArticles(store.get('topic'))
   }
 
+  getReadTotal() {
+    let read = store.get('articlesRead')
+    let total = 0
+    if (read.length > 0) {
+      read.forEach((article: Article) => {
+        total += Math.round(article.readingTime.minutes)
+      })
+    }
+    return total
+  }
+
+  articleRead(article: Article) {
+    let read = store.get('articlesRead')
+    if (!read) {
+      read = []
+    }
+    console.log(read)
+    if (read.length > 0) {
+      const item = read.find((r: Article) => r.id === article.id)
+      // you already read it so dont count it
+      if (!item) {
+        read.push(article)
+      }
+    } else {
+      read.push(article)
+    }
+    store.set('articlesRead', read)
+    this.setState({ totalRead: this.getReadTotal() })
+  }
+
   renderArticle(article: Article) {
     return (
       <article key={article.id}>
-        <a href="http://google.com" target="_blank">
+        <a onClick={() => this.articleRead(article)} href={article._self} target="_blank">
           <h3 className="headline">
             <span className="kicker">{article.headKicker}</span>
             {article.heading}
@@ -103,6 +135,19 @@ class App extends React.Component<Props, State> {
     return <div>{this.state.articles.map((article: Article) => this.renderArticle(article))}</div>
   }
 
+  totalReadBanner() {
+    const totalRead = this.state.totalRead
+    return totalRead > 0 ? (
+      <div className="ribbon-read">
+        <p>
+          <span className="time">{totalRead}</span> minutes reading completed
+        </p>
+      </div>
+    ) : (
+      <noscript />
+    )
+  }
+
   render() {
     return (
       <div className="App">
@@ -114,11 +159,7 @@ class App extends React.Component<Props, State> {
               values={this.state.buttonValues}
               selectedValue={this.state.selectedTotalToRead}
             />
-            <div className="ribbon-read">
-              <p>
-                <span className="time">10</span> minutes reading completed
-              </p>
-            </div>
+            {this.totalReadBanner()}
           </header>
           <main>
             <div className="sidebar">
