@@ -224,7 +224,17 @@ article {
     border-radius: 50%;
     color: #fff;
     text-align: center;
-    align-items: center; }
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap; }
+    article .visited-item .tick {
+      display: block;
+      font-size: 50px;
+      width: 100%; }
+    article .visited-item .done {
+      text-align: center;
+      width: 100%;
+      font-weight: normal; }
   article a.visited .visited-item {
     display: flex; }
   article a:visited {
@@ -248,7 +258,8 @@ main {
   display: flex;
   align-content: center;
   justify-content: center;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  z-index: 2; }
   @media screen and (min-width: 880px) {
     .topic-section {
       width: calc(100% + 185px);
@@ -271,8 +282,7 @@ main {
       background: transparent;
       border: 2px solid white;
       color: white; }
-    .topic-section button:active, .topic-section button:focus,
-    .topic-section button .active {
+    .topic-section button:active, .topic-section button:focus, .topic-section button.active {
       background: #043de2;
       color: white; }
     .topic-section button:focus {
