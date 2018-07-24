@@ -77,7 +77,7 @@ class App extends React.Component<Props, State> {
         <a href="http://google.com" target="_blank">
           <h3 className="headline">
             <span className="kicker">{article.headKicker}</span>
-            {article.heading}
+            <span className="heading">{article.heading}</span>
           </h3>
           <p className="teaser">{article.homepageTeaser}</p>
           <div className="article-data">
