@@ -250,7 +250,6 @@ main {
 .topic-section {
   position: sticky;
   top: 0;
-  height: 100px;
   background: #2b2c2d;
   color: white;
   width: 100%;
@@ -259,11 +258,13 @@ main {
   align-content: center;
   justify-content: center;
   flex-wrap: wrap;
-  z-index: 2; }
+  z-index: 2;
+  height: 200px; }
   @media screen and (min-width: 880px) {
     .topic-section {
       width: calc(100% + 185px);
-      transform: translateX(-185px); } }
+      transform: translateX(-185px);
+      height: 100px; } }
   .topic-section p {
     display: block;
     width: 100%;
@@ -289,3 +290,6 @@ main {
       outline: none; }
     .topic-section button + button {
       margin-left: 18px; }
+    @media screen and (max-width: 879px) {
+      .topic-section button {
+        margin: 5px; } }

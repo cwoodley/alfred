@@ -319,7 +319,6 @@ main {
 .topic-section {
   position: sticky;
   top: 0;
-  height: 100px;
   background: #2b2c2d;
   color: white;
   width: 100%;
@@ -329,10 +328,12 @@ main {
   justify-content: center;
   flex-wrap: wrap;
   z-index: 2;
+  height: 200px;
 
   @media screen and (min-width: 880px) {
     width: calc(100% + 185px);
     transform: translateX(-185px);
+    height: 100px;
   }
   p {
     display: block;
@@ -349,6 +350,7 @@ main {
     font-size: 12px;
     border: 2px solid transparent;
     transition: background 250ms ease;
+
     &:hover {
       background: transparent;
       border: 2px solid white;
@@ -365,6 +367,10 @@ main {
     }
     & + button {
       margin-left: 18px;
+    }
+
+    @media screen and (max-width: 879px) {
+      margin: 5px;
     }
   }
 }
