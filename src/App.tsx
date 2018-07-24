@@ -30,7 +30,7 @@ class App extends React.Component<Props, State> {
       unFiltered: [],
       topicList: [],
       articles: [],
-      buttonValues: [5, 10, 20, 60],
+      buttonValues: [5, 15, 30],
       selectedTotalToRead: 5,
       totalRead: this.getReadTotal(),
       articlesRead: store.get('articlesRead') || [],
