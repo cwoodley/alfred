@@ -79,10 +79,10 @@ class App extends React.Component<Props, State> {
             <div className="sidebar">
               <h2 className="label">Most popular</h2>
             </div>
-            <div className="topic">
+            <div>
               <SaveTopics topics={['sport', 'lifestyle', 'business']} />
+              {this.renderArticles()}
             </div>
-            {this.renderArticles()}
           </main>
         </div>
       </div>
