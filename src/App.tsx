@@ -9,7 +9,7 @@ import * as store from 'store'
 type Props = {}
 
 type State = {
-  topic: string
+  topics: string[]
   topicList: string[]
   articles: Array<Article>
   unFiltered: Array<Article>
@@ -17,6 +17,7 @@ type State = {
   selectedTotalToRead: number
   totalRead: number
   articlesRead: Array<Article>
+  selectedTopics: string[]
 }
 
 class App extends React.Component<Props, State> {
@@ -25,14 +26,15 @@ class App extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
     this.state = {
-      topic: 'news',
+      topics: ['news'],
       unFiltered: [],
       topicList: [],
       articles: [],
-      buttonValues: [5, 10, 15],
+      buttonValues: [5, 10, 30],
       selectedTotalToRead: 5,
       totalRead: this.getReadTotal(),
       articlesRead: store.get('articlesRead') || [],
+      selectedTopics: [],
     }
   }
 
@@ -56,9 +58,9 @@ class App extends React.Component<Props, State> {
     }
   }
 
-  handleTopicSelect = (event: any) => {
-    store.set('topic', event.target.name)
-    this.getTopicArticles(event.target.name)
+  handleTopicsSelected = (selectedTopics: string[]) => {
+    this.setState({ selectedTopics: selectedTopics })
+    this.getTopicArticles(selectedTopics)
   }
 
   setTopics = async () => {
@@ -66,22 +68,21 @@ class App extends React.Component<Props, State> {
     this.setState({ topicList: topicList })
   }
 
-  async getTopicArticles(topic: any) {
-    await this.cache.loadCuration(topic)
-    const curation = this.cache.getCuration(topic)
-    this.setState({ unFiltered: curation.articles, articles: curation.articles, topic: topic })
+  async getTopicArticles(topics: string[]) {
+    await this.cache.loadCurations(topics)
+    const curation = this.cache.getCurations(topics)
+    this.setState({ unFiltered: curation.articles, articles: curation.articles, topics })
     this.onTotalReadClick(this.state.selectedTotalToRead)
-    // console.log(curation)
   }
 
   componentWillMount() {
     this.setTopics()
 
-    if (!store.get('topic')) {
-      this.getTopicArticles('news')
+    if (!store.get('topics')) {
+      this.getTopicArticles(['news'])
       return
     }
-    this.getTopicArticles(store.get('topic'))
+    this.getTopicArticles(store.get('topics'))
   }
 
   getReadTotal() {
@@ -123,7 +124,7 @@ class App extends React.Component<Props, State> {
     const time = article.readingTime.time
 
     return (
-      <article key={article.id}>
+      <article key={article._self}>
         <a className={articleReadClass} onClick={() => this.articleRead(article)} href={article._self} target="_blank">
           <div className="visited-item">
             <span className="tick">&#10003;</span> <span className="done">done</span>
@@ -185,13 +186,17 @@ class App extends React.Component<Props, State> {
           </header>
           <main>
             <div className="sidebar">
-              <h2 className="label">{this.state.topic}</h2>
+              {this.state.topics.map((t, i) => (
+                <h2 key={i} className="label">
+                  {t}
+                </h2>
+              ))}
             </div>
             <div>
               <SaveTopics
                 topics={this.state.topicList}
-                selectAction={this.handleTopicSelect}
-                selected={this.state.topic}
+                selectedTopics={this.state.topics}
+                onSelected={this.handleTopicsSelected}
               />
               {this.renderArticles()}
             </div>

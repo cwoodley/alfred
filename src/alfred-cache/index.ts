@@ -11,8 +11,12 @@ export class AlfredCache {
     this.articlesCache = {}
   }
 
+  public async loadCurations(topics: string[]) {
+    await Promise.all(topics.map(async topic => await this.loadCuration(topic)))
+  }
+
   // loads the curation and populates the reading time for the curation articles, also fetches the articles within the curation
-  public async loadCuration(topic: string = 'news') {
+  private async loadCuration(topic: string = 'news') {
     const response = await fetch(`${BASE_URL}/v4/curation/${topic}`)
     const json = await response.json()
 
@@ -30,8 +34,12 @@ export class AlfredCache {
   }
 
   // get the specific curation from the cache
-  public getCuration(topic: string) {
-    return this.curationCache[topic]
+  public getCurations(topics: string[]) {
+    const articles: any[] = []
+    topics.forEach(topic => {
+      articles.push(...this.curationCache[topic].articles)
+    })
+    return { articles }
   }
 
   // get the specific article from the cache

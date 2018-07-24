@@ -283,7 +283,7 @@ main {
       background: transparent;
       border: 2px solid white;
       color: white; }
-    .topic-section button:active, .topic-section button:focus, .topic-section button.active {
+    .topic-section button:active, .topic-section button.active {
       background: #043de2;
       color: white; }
     .topic-section button:focus {
