@@ -67,6 +67,6 @@ export interface Article extends ListArticle {
 
 export interface ReadingTime {
   readingTime: {
-    minutes: number
+    time: number //time in ms
   }
 }
