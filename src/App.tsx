@@ -110,7 +110,11 @@ class App extends React.Component<Props, State> {
         <div className="wrapper">
           <header>
             <h1>Alfred...</h1>
-            <ButtonGroup onClick={(m: number) => this.onTotalReadClick(m)} values={this.state.buttonValues} />
+            <ButtonGroup
+              onClick={(m: number) => this.onTotalReadClick(m)}
+              values={this.state.buttonValues}
+              selectedValue={this.state.selectedTotalToRead}
+            />
             <div className="ribbon-read">
               <p>
                 <span className="time">10</span> minutes reading completed
