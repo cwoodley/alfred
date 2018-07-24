@@ -20,7 +20,11 @@ class App extends React.Component {
               <button type="button">5</button>
               <button type="button">10</button>
               <button type="button">15</button>
-              <button type="button">20</button>
+            </div>
+            <div className="ribbon-read">
+              <p>
+                <span className="time">10</span> minutes reading completed
+              </p>
             </div>
           </header>
           <main>
