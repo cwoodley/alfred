@@ -3,6 +3,7 @@ import { AlfredCache } from './alfred-cache'
 import './App.css'
 import { Article } from './types/article'
 import { SaveTopics } from 'src/SaveTopics'
+import * as store from 'store'
 
 type Props = {}
 
@@ -22,11 +23,24 @@ class App extends React.Component<Props, State> {
     }
   }
 
-  async componentWillMount() {
-    await this.cache.loadCuration(this.state.topic)
-    const curation = this.cache.getCuration(this.state.topic)
+  handleTopicSelect = (event: any) => {
+    store.set('topic', event.target.name)
+    this.getTopicArticles(event.target.name)
+  }
+
+  async getTopicArticles(topic: any) {
+    await this.cache.loadCuration(topic)
+    const curation = this.cache.getCuration(topic)
     console.log(curation)
     this.setState({ articles: curation.articles })
+  }
+
+  async componentWillMount() {
+    if (!store.get('topic')) {
+      this.getTopicArticles('news')
+    }
+
+    this.getTopicArticles(store.get('topic'))
   }
 
   renderArticle(article: Article) {
@@ -84,7 +98,7 @@ class App extends React.Component<Props, State> {
               <h2 className="label">Most popular</h2>
             </div>
             <div>
-              <SaveTopics topics={['sport', 'lifestyle', 'business']} />
+              <SaveTopics topics={['sport', 'lifestyle', 'business']} selectAction={this.handleTopicSelect} />
               {this.renderArticles()}
             </div>
           </main>
