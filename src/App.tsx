@@ -4,6 +4,7 @@ import './App.css'
 import { Article } from './types/article'
 import { SaveTopics } from 'src/SaveTopics'
 import { ButtonGroup } from './ButtonGroup'
+import * as store from 'store'
 
 type Props = {}
 
@@ -24,7 +25,7 @@ class App extends React.Component<Props, State> {
       articles: [],
     }
   }
-
+  
   onTotalReadClick(totalMin: number) {
     let currentTime = 0
     const articlesToRead: Array<Article> = []
@@ -45,11 +46,24 @@ class App extends React.Component<Props, State> {
     }
   }
 
-  async componentWillMount() {
-    await this.cache.loadCuration(this.state.topic)
-    const curation = this.cache.getCuration(this.state.topic)
+  handleTopicSelect = (event: any) => {
+    store.set('topic', event.target.name)
+    this.getTopicArticles(event.target.name)
+  }
+
+  async getTopicArticles(topic: any) {
+    await this.cache.loadCuration(topic)
+    const curation = this.cache.getCuration(topic)
     console.log(curation)
     this.setState({ unFiltered: curation.articles, articles: curation.articles })
+  }
+
+  async componentWillMount() {
+    if (!store.get('topic')) {
+      this.getTopicArticles('news')
+    }
+
+    this.getTopicArticles(store.get('topic'))
   }
 
   renderArticle(article: Article) {
@@ -92,13 +106,18 @@ class App extends React.Component<Props, State> {
           <header>
             <h1>Alfred...</h1>
             <ButtonGroup onClick={(m: number) => this.onTotalReadClick(m)} />
+            <div className="ribbon-read">
+              <p>
+                <span className="time">10</span> minutes reading completed
+              </p>
+            </div>
           </header>
           <main>
             <div className="sidebar">
               <h2 className="label">Most popular</h2>
             </div>
             <div>
-              <SaveTopics topics={['sport', 'lifestyle', 'business']} />
+              <SaveTopics topics={['sport', 'lifestyle', 'business']} selectAction={this.handleTopicSelect} />
               {this.renderArticles()}
             </div>
           </main>

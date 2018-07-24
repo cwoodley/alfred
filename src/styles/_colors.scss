@@ -1,9 +1,12 @@
 $primary: #043de2;
-$secondary: #E5E5E5;
+$secondary: #e5e5e5;
+$highlight: #02c2c9;
 
 $bg: $primary;
 $label-bg: $secondary;
-$body-font-color: #2B2C2D;
-$reading-time: #D2d5d6;
+$body-font-color: #2b2c2d;
+$reading-time: $highlight;
 $divider-color: $secondary;
 $kicker-color: $primary;
+$button-active-color: $primary;
+$ribbon-read-bg: $highlight;
