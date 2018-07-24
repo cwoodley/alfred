@@ -85,7 +85,7 @@ class App extends React.Component<Props, State> {
   getReadTotal() {
     let read = store.get('articlesRead')
     let total = 0
-    if (read.length > 0) {
+    if (read && read.length > 0) {
       read.forEach((article: Article) => {
         total += Math.round(article.readingTime.minutes)
       })
