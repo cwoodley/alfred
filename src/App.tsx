@@ -2,6 +2,7 @@ import * as React from 'react'
 import { AlfredCache } from './alfred-cache'
 import './App.css'
 import { Article } from './types/article'
+import { SaveTopics } from 'src/SaveTopics'
 
 type Props = {}
 
@@ -65,10 +66,21 @@ class App extends React.Component<Props, State> {
     return (
       <div className="App">
         <div className="wrapper">
-          <h1>Alfred...</h1>
+          <header>
+            <h1>Alfred...</h1>
+            <div className="button-group">
+              <button type="button">5</button>
+              <button type="button">10</button>
+              <button type="button">15</button>
+              <button type="button">20</button>
+            </div>
+          </header>
           <main>
             <div className="sidebar">
               <h2 className="label">Most popular</h2>
+            </div>
+            <div className="topic">
+              <SaveTopics topics={['sport', 'lifestyle', 'business']} />
             </div>
             {this.renderArticles()}
           </main>

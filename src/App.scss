@@ -40,6 +40,8 @@ body {
     color: $body-font-color;
 }
 
+
+//header
 h1 {
     font-family: 'Playfair Display', serif;
     @include interpolate(font-size, 320px, 1280px, 46px, 100px);
@@ -47,18 +49,29 @@ h1 {
     margin: 0 0 1.438rem 0;
 }
 
-.label {
-    font-family: 'Fira Sans', sans-serif;
-    font-size: 0.875em;
-    font-weight: bold;
-    background-color: $label-bg;
-    text-transform: uppercase;
-    padding: 13px 17px;
-    margin: 0;
-    position: sticky;
-    display: inline-block;
+.button-group {
+    border: 2px solid white;
+    border-radius: 20px;
+    width: 325px;
+    font-size: 20px;
+
+    button {
+        background: none;
+        border: none;
+        color: white;
+        width: 80px;
+        height: 54px;
+
+
+    }
+
+    button + button {
+        border-left: 2px solid white;
+    }
 }
 
+
+// article
 .wrapper {
     width: 80%;
     margin: 0 auto;
@@ -76,6 +89,20 @@ main {
     }
 
 }
+
+// Sidebar
+.label {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 0.875em;
+    font-weight: bold;
+    background-color: $label-bg;
+    text-transform: uppercase;
+    padding: 13px 17px;
+    margin: 0;
+    position: sticky;
+    display: inline-block;
+}
+
 
 .sidebar {
     padding-right: 25px;
