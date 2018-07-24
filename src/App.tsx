@@ -12,6 +12,8 @@ type State = {
   topic: string
   articles: Array<Article>
   unFiltered: Array<Article>
+  buttonValues: number[]
+  selectedTotalToRead: number
 }
 
 class App extends React.Component<Props, State> {
@@ -23,9 +25,11 @@ class App extends React.Component<Props, State> {
       topic: 'news',
       unFiltered: [],
       articles: [],
+      buttonValues: [5, 10, 15],
+      selectedTotalToRead: 5,
     }
   }
-  
+
   onTotalReadClick(totalMin: number) {
     let currentTime = 0
     const articlesToRead: Array<Article> = []
@@ -56,6 +60,7 @@ class App extends React.Component<Props, State> {
     const curation = this.cache.getCuration(topic)
     console.log(curation)
     this.setState({ unFiltered: curation.articles, articles: curation.articles })
+    this.onTotalReadClick(this.state.selectedTotalToRead)
   }
 
   componentWillMount() {
@@ -63,7 +68,6 @@ class App extends React.Component<Props, State> {
       this.getTopicArticles('news')
       return
     }
-
     this.getTopicArticles(store.get('topic'))
   }
 
@@ -106,7 +110,7 @@ class App extends React.Component<Props, State> {
         <div className="wrapper">
           <header>
             <h1>Alfred...</h1>
-            <ButtonGroup onClick={(m: number) => this.onTotalReadClick(m)} />
+            <ButtonGroup onClick={(m: number) => this.onTotalReadClick(m)} values={this.state.buttonValues} />
             <div className="ribbon-read">
               <p>
                 <span className="time">10</span> minutes reading completed
