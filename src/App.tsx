@@ -10,6 +10,7 @@ type Props = {}
 
 type State = {
   topic: string
+  topicList: string[]
   articles: Array<Article>
   unFiltered: Array<Article>
   buttonValues: number[]
@@ -24,6 +25,7 @@ class App extends React.Component<Props, State> {
     this.state = {
       topic: 'news',
       unFiltered: [],
+      topicList: [],
       articles: [],
       buttonValues: [5, 10, 15],
       selectedTotalToRead: 5,
@@ -55,14 +57,22 @@ class App extends React.Component<Props, State> {
     this.getTopicArticles(event.target.name)
   }
 
+  setTopics = async () => {
+    const topicList = await this.cache.getTopics()
+    this.setState({ topicList: topicList })
+  }
+
   async getTopicArticles(topic: any) {
     await this.cache.loadCuration(topic)
     const curation = this.cache.getCuration(topic)
     this.setState({ unFiltered: curation.articles, articles: curation.articles })
     this.onTotalReadClick(this.state.selectedTotalToRead)
+    // console.log(curation)
   }
 
   componentWillMount() {
+    this.setTopics()
+
     if (!store.get('topic')) {
       this.getTopicArticles('news')
       return
@@ -122,10 +132,10 @@ class App extends React.Component<Props, State> {
           </header>
           <main>
             <div className="sidebar">
-              <h2 className="label">Most popular</h2>
+              <h2 className="label">{this.state.topic}</h2>
             </div>
             <div>
-              <SaveTopics topics={['sport', 'lifestyle', 'business']} selectAction={this.handleTopicSelect} />
+              <SaveTopics topics={this.state.topicList} selectAction={this.handleTopicSelect} />
               {this.renderArticles()}
             </div>
           </main>
