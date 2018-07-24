@@ -46,7 +46,7 @@ class App extends React.Component<Props, State> {
           currentTime += articleMin
         }
       })
-      this.setState({ articles: articlesToRead })
+      this.setState({ articles: articlesToRead, selectedTotalToRead: totalMin })
     }
   }
 
