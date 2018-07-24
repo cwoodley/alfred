@@ -1,28 +1,116 @@
-.App {
-  text-align: center;
-}
+body {
+  background: #043de2;
+  font-family: 'Merriweather', serif;
+  color: #2B2C2D; }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+h1 {
+  font-family: 'Playfair Display', serif;
   color: white;
-}
+  margin: 0 0 1.438rem 0; }
+  h1 {
+    font-size: 46px; }
+    @media screen and (min-width: 320px) {
+      h1 {
+        font-size: calc(5.625vw + 28px); } }
+    @media screen and (min-width: 1280px) {
+      h1 {
+        font-size: 100px; } }
 
-.App-title {
-  font-size: 1.5em;
-}
+.label {
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 0.875em;
+  font-weight: bold;
+  background-color: #E5E5E5;
+  text-transform: uppercase;
+  padding: 13px 17px;
+  margin: 0;
+  position: sticky;
+  display: inline-block; }
 
-.App-intro {
-  font-size: large;
-}
+.wrapper {
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem; }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+main {
+  background: white;
+  display: grid;
+  grid-template-columns: 1fr; }
+  @media screen and (min-width: 880px) {
+    main {
+      padding: 35px 0 0 0;
+      grid-template-columns: 185px auto; } }
+
+.sidebar {
+  padding-right: 25px; }
+  @media screen and (max-width: 860px) {
+    .sidebar {
+      display: none; } }
+
+.kicker {
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 0.875rem;
+  font-weight: bold;
+  color: #043de2;
+  display: block;
+  margin-bottom: 13px;
+  text-transform: uppercase; }
+
+.headline {
+  line-height: 1.217;
+  margin: 0; }
+  .headline {
+    font-size: 26px; }
+    @media screen and (min-width: 320px) {
+      .headline {
+        font-size: calc(0.625vw + 24px); } }
+    @media screen and (min-width: 1280px) {
+      .headline {
+        font-size: 32px; } }
+
+.article-data {
+  display: flex; }
+
+.article-creation {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  justify-content: center;
+  padding-left: 14px; }
+  .article-creation .byline {
+    margin: 0;
+    line-height: 2em; }
+
+.reading-time {
+  background-color: #D2d5d6;
+  border-radius: 50%;
+  display: inline-block;
+  width: 52px;
+  height: 52px;
+  text-align: center;
+  display: flex;
+  align-content: center;
+  flex-direction: column; }
+  .reading-time .number {
+    font-size: 30px;
+    display: block;
+    margin: 0; }
+  .reading-time .timescale {
+    font-size: 10px; }
+
+.teaser {
+  font-size: 1em;
+  line-height: 1.636; }
+
+article {
+  border-bottom: 2px solid #E5E5E5;
+  padding: 2.125rem 1.5vw;
+  margin: 0 2vw; }
+  @media screen and (min-width: 860px) {
+    article {
+      margin: 0 10vw 0 0; }
+      article:first-child {
+        padding-top: 0; } }
+  article a {
+    text-decoration: none;
+    color: #2B2C2D; }

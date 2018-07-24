@@ -2,7 +2,7 @@ import * as React from 'react'
 import { AlfredCache } from 'src/alfred-cache'
 import './App.css'
 
-import logo from './logo.svg'
+// import logo from './logo.svg';
 
 class App extends React.Component {
   private cache = new AlfredCache()
@@ -14,13 +14,40 @@ class App extends React.Component {
   public render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
+        <div className="wrapper">
+            <h1>Alfred...</h1>
+            <main>
+                <div className="sidebar">
+                    <h2 className="label">Most popular</h2>
+                </div>
+                <div>
+                   <article>
+                       <a href="http://google.com" target="_blank">
+                        <h3 className="headline"><span className="kicker">Good Job</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+                        <p className="teaser">Sed posuere consectetur est at lobortis. Nulla vitae elit libero, a pharetra augue.</p>
+                        <div className="article-data">
+                            <span className="reading-time"><span className="number">1</span><span className="timescale">mins</span></span>
+                            <div className="article-creation">
+                                <p className="byline">Gary Adshead | <span className="position">Political Editor</span></p>
+                                <time dateTime="blah">Wednesday, 28th November 2016, 2:14pm</time>
+                            </div>
+                        </div>
+                       </a>
+                    </article>
+                    <article>
+                       <h3 className="headline"><span className="kicker">Good Job</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+                       <p className="teaser">Sed posuere consectetur est at lobortis. Nulla vitae elit libero, a pharetra augue.</p>
+                       <div className="article-data">
+                        <span className="reading-time"><span className="number">1</span><span className="timescale">mins</span></span>
+                        <div className="article-creation">
+                            <p className="byline">Gary Adshead <span className="position">Political Editor</span></p>
+                            <time dateTime="blah">Wednesday, 28th November 2016, 2:14pm</time>
+                        </div>
+                       </div>
+                    </article>
+                </div>
+            </main>
+        </div>
       </div>
     )
   }
