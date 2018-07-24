@@ -58,7 +58,6 @@ class App extends React.Component<Props, State> {
   async getTopicArticles(topic: any) {
     await this.cache.loadCuration(topic)
     const curation = this.cache.getCuration(topic)
-    console.log(curation)
     this.setState({ unFiltered: curation.articles, articles: curation.articles })
     this.onTotalReadClick(this.state.selectedTotalToRead)
   }
