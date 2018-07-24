@@ -125,6 +125,9 @@ class App extends React.Component<Props, State> {
     return (
       <article key={article.id}>
         <a className={articleReadClass} onClick={() => this.articleRead(article)} href={article._self} target="_blank">
+          <div className="visited-item">
+            <span className="tick">&#10003;</span> <span className="done">done</span>
+          </div>
           <h3 className="headline">
             <span className="kicker">{article.headKicker}</span>
             <span className="heading">{article.heading}</span>
