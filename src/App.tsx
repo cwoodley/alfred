@@ -133,7 +133,7 @@ class App extends React.Component<Props, State> {
             <span className="kicker">{article.headKicker}</span>
             <span className="heading">{article.heading}</span>
           </h3>
-          <h4 style={{ color: 'grey', border: 'solid 1px grey', display: 'inline-block', padding: 5, fontSize: 12 }}>
+          <h4 style={{ color: '#7d7d7d', backgroundColor: '#eaeaea', display: 'inline-block', padding: 5, fontSize: 12 }}>
             {article.topics.primary.id}
           </h4>
           <p className="teaser">{article.homepageTeaser}</p>
