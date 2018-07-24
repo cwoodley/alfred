@@ -98,7 +98,6 @@ class App extends React.Component<Props, State> {
     if (!read) {
       read = []
     }
-    console.log(read)
     if (read.length > 0) {
       const item = read.find((r: Article) => r.id === article.id)
       // you already read it so dont count it
