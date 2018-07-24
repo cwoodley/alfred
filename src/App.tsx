@@ -1,16 +1,68 @@
 import * as React from 'react'
-import { AlfredCache } from 'src/alfred-cache'
+import { AlfredCache } from './alfred-cache'
 import './App.css'
+import { Article } from './types/article'
 import { SaveTopics } from 'src/SaveTopics'
 
-class App extends React.Component {
+type Props = {}
+
+type State = {
+  topic: string
+  articles: Array<Article>
+}
+
+class App extends React.Component<Props, State> {
   private cache = new AlfredCache()
 
-  componentWillMount() {
-    this.cache.loadCuration()
+  constructor(props: Props) {
+    super(props)
+    this.state = {
+      topic: 'news',
+      articles: [],
+    }
   }
 
-  public render() {
+  async componentWillMount() {
+    await this.cache.loadCuration(this.state.topic)
+    const curation = this.cache.getCuration(this.state.topic)
+    console.log(curation)
+    this.setState({ articles: curation.articles })
+  }
+
+  renderArticle(article: Article) {
+    return (
+      <article key={article.id}>
+        <a href="http://google.com" target="_blank">
+          <h3 className="headline">
+            <span className="kicker">{article.headKicker}</span>
+            {article.heading}
+          </h3>
+          <p className="teaser">{article.homepageTeaser}</p>
+          <div className="article-data">
+            <span className="reading-time">
+              <span className="number">{Math.round(article.readingTime.minutes)}</span>
+              <span className="timescale">mins</span>
+            </span>
+            <div className="article-creation">
+              <p className="byline">
+                {article.byline && article.byline.text}
+                <span className="position">
+                  {article.profiles.length > 0 ? article.profiles[0].position : undefined}
+                </span>
+              </p>
+              <time dateTime="blah">{new Date(article.publicationDate).toLocaleString()}</time>
+            </div>
+          </div>
+        </a>
+      </article>
+    )
+  }
+
+  renderArticles() {
+    return <div>{this.state.articles.map((article: Article) => this.renderArticle(article))}</div>
+  }
+
+  render() {
     return (
       <div className="App">
         <div className="wrapper">
@@ -32,51 +84,8 @@ class App extends React.Component {
               <h2 className="label">Most popular</h2>
             </div>
             <div>
-              <div className="topic">
-                <SaveTopics topics={['sport', 'lifestyle', 'business']} />
-              </div>
-              <article>
-                <a href="http://google.com" target="_blank">
-                  <h3 className="headline">
-                    <span className="kicker">Good Job</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  </h3>
-                  <p className="teaser">
-                    Sed posuere consectetur est at lobortis. Nulla vitae elit libero, a pharetra augue.
-                  </p>
-                  <div className="article-data">
-                    <span className="reading-time">
-                      <span className="number">1</span>
-                      <span className="timescale">mins</span>
-                    </span>
-                    <div className="article-creation">
-                      <p className="byline">
-                        Gary Adshead | <span className="position">Political Editor</span>
-                      </p>
-                      <time dateTime="blah">Wednesday, 28th November 2016, 2:14pm</time>
-                    </div>
-                  </div>
-                </a>
-              </article>
-              <article>
-                <h3 className="headline">
-                  <span className="kicker">Good Job</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </h3>
-                <p className="teaser">
-                  Sed posuere consectetur est at lobortis. Nulla vitae elit libero, a pharetra augue.
-                </p>
-                <div className="article-data">
-                  <span className="reading-time">
-                    <span className="number">1</span>
-                    <span className="timescale">mins</span>
-                  </span>
-                  <div className="article-creation">
-                    <p className="byline">
-                      Gary Adshead <span className="position">Political Editor</span>
-                    </p>
-                    <time dateTime="blah">Wednesday, 28th November 2016, 2:14pm</time>
-                  </div>
-                </div>
-              </article>
+              <SaveTopics topics={['sport', 'lifestyle', 'business']} />
+              {this.renderArticles()}
             </div>
           </main>
         </div>

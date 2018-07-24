@@ -1,7 +1,5 @@
 import { getReadingTimeForArticle } from './time'
 
-type TOPIC = 'news' | 'sport'
-
 const BASE_URL = 'https://content.thewest.com.au'
 
 export class AlfredCache {
@@ -14,7 +12,7 @@ export class AlfredCache {
   }
 
   // loads the curation and populates the reading time for the curation articles, also fetches the articles within the curation
-  public async loadCuration(topic: TOPIC = 'news') {
+  public async loadCuration(topic: string = 'news') {
     const response = await fetch(`${BASE_URL}/v4/curation/${topic}`)
     const json = await response.json()
 
