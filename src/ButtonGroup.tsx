@@ -8,8 +8,13 @@ export const ButtonGroup = ({ onClick, values, selectedValue }: Props) => {
     <div className="select-time">
       <p>How many minutes?</p>
       <div className="button-group">
-        {values.map(v => (
-          <button className={selectedValue === v ? 'clicked' : undefined} onClick={() => onClick(v)} type="button">
+        {values.map((v, i) => (
+          <button
+            key={i}
+            className={selectedValue === v ? 'clicked' : undefined}
+            onClick={() => onClick(v)}
+            type="button"
+          >
             {v}
           </button>
         ))}
